@@ -1,0 +1,24 @@
+Hops for 100% transmission success:
+
+9 nodes
+-------
+1 hop
+
+1.34 - 1 = 0.34
+
+25 nodes
+--------
+8*1 hop 
+16*2 hop
+avg: 1.6667
+
+2,18 - 1,67 = 0,51
+
+49 nodes 
+--------
+8*1 hop 
+16*2 hop
+24*3 hop
+avg: 2.3333
+
+3,06−2,33 = 0,73

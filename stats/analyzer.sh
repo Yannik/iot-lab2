@@ -12,7 +12,7 @@ echo "Middle node: $middle_node"
 
 # Latency
 avg_hops=$(grep -o 'hops: .*$' "$logfile" | awk -v nodes=$nodes -v seqs=$seqs '{hops+=$2} END {print hops/nodes/seqs}')
-echo "Average hops: $avg_hops"
+echo "Average hops: $(printf "%.2f" $avg_hops)"
 
 # Reliability
 not_received=0
@@ -20,7 +20,7 @@ for seq in $(seq 1 $seqs); do
   for node in $(seq 1 $nodes); do
     [ "$node" -eq "$middle_node" ] && continue
     if ! $(awk -v id=$node '$2=="ID:"id {print}' "$logfile" | grep -q "seq id: $seq,"); then
-      echo "Didn't receive node $node seq_id $seq"
+      #echo "Didn't receive node $node seq_id $seq"
       ((not_received++))
     fi  
   done
