@@ -43,7 +43,7 @@ void input_callback(const void *data, uint16_t len,
       if (cmd.hops > 10) return; 
       seq_id_received = cmd.seq_id;
 
-      LOG_INFO("Received LED setting %u\n", cmd.data);
+      LOG_INFO("Received LED setting %u, seq id: %u, hops: %u\n", cmd.data, cmd.seq_id, cmd.hops);
       leds_set(1 << (4 + cmd.data));
 
       cmd.hops += 1;
