@@ -1,0 +1,17 @@
+Analyzing log_9_nodes_50_seq.txt with 9 nodes and 50 sequences
+Middle node: 5
+Average hops: 1.33556
+Lost packages: 10
+Loss percentage: 2.50%
+
+Analyzing log_25_nodes_50_seq.txt with 25 nodes and 50 sequences
+Middle node: 13
+Average hops: 2.1792
+Lost packages: 9
+Loss percentage: 0.75%
+
+Analyzing log_49_nodes_50_seq.txt with 49 nodes and 50 sequences
+Middle node: 25
+Average hops: 3.05673
+Lost packages: 18
+Loss percentage: 0.75%
