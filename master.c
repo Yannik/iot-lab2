@@ -23,15 +23,11 @@
 #include "helpers.h"
 
 /* Configuration */
-#define SEND_INTERVAL (1 * CLOCK_SECOND)
-#define NUM_MASTERS 1
-#define NUM_SLAVES 4
-
+#define SEND_INTERVAL (60 * CLOCK_SECOND)
 
 /*---------------------------------------------------------------------------*/
 PROCESS(master_process, "Master");
 AUTOSTART_PROCESSES(&master_process);
-
 
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(master_process, ev, data)
@@ -48,13 +44,14 @@ PROCESS_THREAD(master_process, ev, data)
   nullnet_len = sizeof(cmd);
 
   etimer_set(&periodic_timer, SEND_INTERVAL);
-  while(1) {
+  while (1)
+  {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
     cmd.data = random_rand() % 3;
-    leds_set(1 << (4 + cmd.data));
+    leds_toggle(1 << (4 + cmd.data));
 
-    LOG_INFO("Broadcasting LED %u \n", cmd.data);
+    LOG_INFO("Broadcasting LED %u, seq id %u \n", cmd.data, cmd.seq_id);
     NETSTACK_NETWORK.output(NULL);
 
     cmd.seq_id++;
